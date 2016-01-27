@@ -20,26 +20,28 @@
     	</md-toolbar>
 
 
-      <div flex layout="row" ng-controller = "MainController" ng-cloak>
+	      <div flex layout="row" ng-controller = "MainController" ng-cloak>
 
-        <!-- Container #3 -->
-        <md-sidenav md-is-locked-open="true" class="md-whiteframe-z2">
+	        <!-- Container #3 -->
+	        <md-sidenav md-is-locked-open="true" class="md-whiteframe-z2">
 
-	        <md-list>
-	        	<md-list-item ng-repeat="q in questions">
-		            <md-button>
-		              Question {{ q.no | uppercase }}
-		            </md-button>
-	        	</md-list-item>
-	        </md-list>
+		        <md-list>
+		        	<md-list-item ng-repeat="q in questions">
+			            <md-button>
+			              Question {{q.no}} {{q.feedback}}
+			            </md-button>
+		        	</md-list-item>
+		        </md-list>
+				<md-content layout-padding>
+					Score: 5/6
+				</md-content>
 
-	    </md-sidenav>
+		    </md-sidenav>
 
-        <!-- Container #4 -->
-        <md-content flex id="content">
-        <div flex-xs flex-gt-xs="70" layout="column">
-			<md-card ng-repeat="q in questions ">
-
+	        <!-- Container #4 -->
+	        <md-content flex id="content">
+	        <div flex-xs flex-gt-xs="70" layout="column">
+				<md-card ng-repeat="q in questions ">
 					<md-card-header>
 				         <md-card-title-text>
 				           <span class="md-headline">{{q.no}}. {{q.text}}</span>
@@ -51,22 +53,16 @@
 				        <p>{{q.text}}</p>
 				    </md-card-content>
 					-->
-		<md-card-actions layout="column" layout-align="start center">
-			<md-button id="optionA">A. {{q.optionA}}</md-button>
-			<md-button id="optionB">B. {{q.optionB}}</md-button>
-			<md-button id="optionC">C. {{q.optionC}}</md-button>
-        </md-card-actions>
+				<md-card-actions layout="column" layout-align="start center">
+					<md-button ng-click="checkAnswer(q.no, 'A')">A. {{q.optionA}}</md-button>
+					<md-button ng-click="checkAnswer(q.no, 'B')">B. {{q.optionB}}</md-button>
+					<md-button ng-click="checkAnswer(q.no, 'C')">C. {{q.optionC}}</md-button>
+		        </md-card-actions>
 
+			</md-card>
+			</div>
+			</md-content>
 
-		</md-card>
-		</div>
-		</md-content>
-
-    </div>
-
-
-
-
-
+	    </div>
 	</body>
 </html>

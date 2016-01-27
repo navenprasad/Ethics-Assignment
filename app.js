@@ -1,7 +1,20 @@
 var demoApp = angular.module("ethicsApp", ["ngMaterial"]);
 
 demoApp.controller("MainController", function($scope){
-
+	$scope.checkAnswer = function(questionNo, answer) {
+		angular.forEach($scope.questions, function(value, index) {
+			if (questionNo == value.no) {
+				$scope.questions[index].answered = true;
+				if (answer == value.answer) {
+					$scope.questions[index].correct = true;
+					$scope.questions[index].feedback = "Correct";
+				} else {
+					$scope.questions[index].correct = false;
+					$scope.questions[index].feedback = "Incorrect";
+				}
+			}
+		});
+	};
 
 	$scope.questions = [
 		{
@@ -11,7 +24,7 @@ demoApp.controller("MainController", function($scope){
 			optionA : "Your PC from being hacked.",
 			optionB : "Individual information put away on PCs.",
 			optionC : "Theft of copyright materials.",
-			correct : "B"
+			answer : "B"
 		},
 		{
 			no: 2,
@@ -20,7 +33,7 @@ demoApp.controller("MainController", function($scope){
 			optionA : "1990",
 			optionB : "1994",
 			optionC : "1998",
-			correct : "C"
+			answer : "C"
 		},
 		{
 			no: 3,
@@ -29,7 +42,7 @@ demoApp.controller("MainController", function($scope){
 			optionA : "Data Commissioner",
 			optionB : "Information Controller",
 			optionC : "Information Subject",
-			correct : "A"
+			answer : "A"
 		},
 		{
 			no: 4,
@@ -38,7 +51,7 @@ demoApp.controller("MainController", function($scope){
 			optionA : "Information Commissioner",
 			optionB : "Data Controller",
 			optionC : "Data User",
-			correct : "B"
+			answer : "B"
 		},
 		{
 			no: 5,
@@ -47,7 +60,7 @@ demoApp.controller("MainController", function($scope){
 			optionA : "Data Commissioner",
 			optionB : "Information Controller ",
 			optionC : "Information Subject",
-			correct : "C"
+			answer : "C"
 		},
 		{
 			no: 6,
@@ -56,7 +69,7 @@ demoApp.controller("MainController", function($scope){
 			optionA : "Information Commissioner",
 			optionB : "Data Controller",
 			optionC : "Data Subject",
-			correct : "B"
+			answer : "B"
 		},
 		{
 			no: 7,
@@ -65,7 +78,7 @@ demoApp.controller("MainController", function($scope){
 			optionA : "Name",
 			optionB : "Date of birth",
 			optionC : "Religion",
-			correct : "C"
+			answer : "C"
 		},
 		{
 			no: 8,
@@ -74,7 +87,7 @@ demoApp.controller("MainController", function($scope){
 			optionA : "4",
 			optionB : "6",
 			optionC : "8",
-			correct : "C"
+			answer : "C"
 		},
 		{
 			no: 9,
@@ -83,7 +96,7 @@ demoApp.controller("MainController", function($scope){
 			optionA : "Just for whatever length of time that is vital ",
 			optionB : "There is no time limit ",
 			optionC : "One year ",
-			correct : "A"
+			answer : "A"
 		},
 		{
 			no: 10,
@@ -92,7 +105,7 @@ demoApp.controller("MainController", function($scope){
 			optionA : "Stop an organization putting away individual information on them.",
 			optionB : "Have erroneous information changed.",
 			optionC : "Have entry to the individual information being put away about them.",
-			correct : "A"
+			answer : "A"
 		}
 	];
 });
