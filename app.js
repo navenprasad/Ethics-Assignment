@@ -1,6 +1,14 @@
 var demoApp = angular.module("ethicsApp", ["ngMaterial"]);
 
-demoApp.controller("MainController", function($scope){
+demoApp.controller("MainController", function($scope, $mdDialog){
+	$mdDialog.show($mdDialog.alert(
+		{
+			title: 'Welcome',
+			textContent: 'This quiz is created to teach you about the Data Protection Act. Have fun learning!',
+			ok: 'Continue'
+		})
+	);
+
 	angular.forEach($scope.questions, function (value, index) {
 		questions.answered = false;
 	});
@@ -14,9 +22,24 @@ demoApp.controller("MainController", function($scope){
 				if (answer == value.answer) {
 					$scope.questions[index].correct = true;
 					$scope.questions[index].feedback = " - Correct";
+
+					$mdDialog.show($mdDialog.alert(
+						{
+				          	title: 'Congratulations',
+				          	textContent: 'You have answered correctly.',
+				          	ok: 'Continue'
+			        	})
+					);
 				} else {
 					$scope.questions[index].correct = false;
 					$scope.questions[index].feedback = " - Incorrect";
+					$mdDialog.show($mdDialog.alert(
+						{
+				          	title: 'Please try again.',
+				          	textContent: 'You answer is incorrect.',
+				          	ok: 'Continue'
+			        	})
+					);
 				}
 
 				$scope.updateScore();
