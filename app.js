@@ -1,18 +1,44 @@
 var demoApp = angular.module("ethicsApp", ["ngMaterial"]);
 
 demoApp.controller("MainController", function($scope){
+	angular.forEach($scope.questions, function (value, index) {
+		questions.answered = false;
+	});
+
 	$scope.checkAnswer = function(questionNo, answer) {
 		angular.forEach($scope.questions, function(value, index) {
 			if (questionNo == value.no) {
 				$scope.questions[index].answered = true;
+				$scope.questionsAnswered
+
 				if (answer == value.answer) {
 					$scope.questions[index].correct = true;
-					$scope.questions[index].feedback = "Correct";
+					$scope.questions[index].feedback = " - Correct";
 				} else {
 					$scope.questions[index].correct = false;
-					$scope.questions[index].feedback = "Incorrect";
+					$scope.questions[index].feedback = " - Incorrect";
 				}
+
+				$scope.updateScore();
 			}
+		});
+	};
+
+	$scope.questionsAnswered = 0;
+	$scope.questionsCorrect = 0;
+
+	$scope.updateScore = function() {
+		$scope.questionsAnswered = 0;
+		$scope.questionsCorrect = 0;
+
+		angular.forEach($scope.questions, function(value, index) {
+				if (value.answered) {
+					$scope.questionsAnswered++;
+				}
+
+				if (value.correct) {
+					$scope.questionsCorrect++;
+				}
 		});
 	};
 
