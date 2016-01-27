@@ -5,7 +5,7 @@
 		<link href="bower_components/angular-material/angular-material.css" rel="stylesheet" />
 		<script src='bower_components/angular/angular.min.js'></script>
 		<script src='app.js'></script>
-		
+
 	</head>
 	<body ng-app = "ethicsApp" layout ="column"  >
 
@@ -26,9 +26,9 @@
         <md-sidenav md-is-locked-open="true" class="md-whiteframe-z2">
 
 	        <md-list>
-	        	<md-list-item ng-repeat="q in questions ">
+	        	<md-list-item ng-repeat="q in questions">
 		            <md-button>
-		              {{ q.no | uppercase }}	-  {{q.title | uppercase}}
+		              Question {{ q.no | uppercase }}
 		            </md-button>
 	        	</md-list-item>
 	        </md-list>
@@ -39,33 +39,34 @@
         <md-content flex id="content">
         <div flex-xs flex-gt-xs="70" layout="column">
 			<md-card ng-repeat="q in questions ">
-				
+
 					<md-card-header>
 				         <md-card-title-text>
-				           <span class="md-headline">{{ q.no | uppercase }}	-  {{q.title | uppercase}}</span>
+				           <span class="md-headline">{{q.no}}. {{q.text}}</span>
 				         </md-card-title-text>
 				    </md-card-header>
-				    <img ng-src="{{q.picture}}" class="md-card-image" alt="Washed Out">
-				    <md-card-content> 
+				    <!-- <img ng-src="{{q.picture}}" class="md-card-image" alt="Washed Out"> -->
+					<!--
+				    <md-card-content>
 				        <p>{{q.text}}</p>
 				    </md-card-content>
-		<md-card-actions layout="row" layout-align="start center">
-			<md-button>{{q.optionA}}</md-button>
-			<md-button>{{q.optionB}}</md-button>
-			<md-button>{{q.optionC}}</md-button>
-			<md-button>{{q.optionD}}</md-button>
+					-->
+		<md-card-actions layout="column" layout-align="start center">
+			<md-button id="optionA">A. {{q.optionA}}</md-button>
+			<md-button id="optionB">B. {{q.optionB}}</md-button>
+			<md-button id="optionC">C. {{q.optionC}}</md-button>
         </md-card-actions>
-        
+
 
 		</md-card>
-		</div>		     
+		</div>
 		</md-content>
 
     </div>
-        
-    	
 
-	
+
+
+
 
 	</body>
 </html>
