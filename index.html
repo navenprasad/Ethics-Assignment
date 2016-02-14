@@ -3,6 +3,9 @@
 	<head>
 		<title>Ethics and Professional Conduct</title>
 		<link href="bower_components/angular-material/angular-material.css" rel="stylesheet" />
+
+		<link rel="stylesheet" href="bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
 		<script src='bower_components/angular/angular.min.js'></script>
 		<script src='app.js'></script>
 
@@ -41,29 +44,31 @@
 
 	        <!-- Container #4 -->
 	        <md-content flex id="content">
-	        <div flex-xs flex-gt-xs="70" layout="column">
-				<md-card ng-repeat="q in questions ">
-					<md-card-header>
-				         <md-card-title-text>
-				           <span class="md-headline">{{q.no}}. {{q.text}}</span>
-				         </md-card-title-text>
-				    </md-card-header>
-				    <!-- <img ng-src="{{q.picture}}" class="md-card-image" alt="Washed Out"> -->
-					<!--
-				    <md-card-content>
-				        <p>{{q.text}}</p>
-				    </md-card-content>
-					-->
-				<md-card-actions layout="column" layout-align="start center">
-					<md-button ng-click="checkAnswer(q.no, 'A')">A. {{q.optionA}}</md-button>
-					<md-button ng-click="checkAnswer(q.no, 'B')">B. {{q.optionB}}</md-button>
-					<md-button ng-click="checkAnswer(q.no, 'C')">C. {{q.optionC}}</md-button>
-		        </md-card-actions>
+		        <div flex-xs flex-gt-xs="70" layout="column">
+					<div class="row">
+						<md-card ng-repeat="q in questions ">
 
-			</md-card>
+							<md-card-header>
+						         <md-card-title-text>
+						           <span class="md-headline">{{q.no}}. {{q.text}}</span>
+						         </md-card-title-text>
+						    </md-card-header>
+						    <!-- <img ng-src="{{q.picture}}" class="md-card-image" alt="Washed Out"> -->
+							<!--
+						    <md-card-content>
+						        <p>{{q.text}}</p>
+						    </md-card-content>
+							-->
+						<md-card-actions layout="column" layout-align="start center">
+							<md-button ng-click="checkAnswer(q.no, 'A')">A. {{q.optionA}}</md-button>
+							<md-button ng-click="checkAnswer(q.no, 'B')">B. {{q.optionB}}</md-button>
+							<md-button ng-click="checkAnswer(q.no, 'C')">C. {{q.optionC}}</md-button>
+				        </md-card-actions>
+						</div>
+
+					</md-card>
+				</md-content>
 			</div>
-			</md-content>
-
 	    </div>
 	</body>
 </html>
